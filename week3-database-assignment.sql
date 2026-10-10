@@ -1,0 +1,30 @@
+-- Total Payment Amount for Each Payment Date
+SELECT 
+    paymentDate,
+    SUM(amount) AS total_amount
+FROM payments
+GROUP BY paymentDate
+ORDER BY paymentDate DESC
+LIMIT 5;
+
+-- Average Credit Limit of Each Customer
+SELECT 
+    customerName,
+    country,
+    AVG(creditLimit) AS average_credit_limit
+FROM customers
+GROUP BY customerName, country;
+
+-- Total Price of Products Ordered
+SELECT 
+    productCode,
+    quantityOrdered,
+    SUM(quantityOrdered * priceEach) AS total_price
+FROM orderdetails
+GROUP BY productCode, quantityOrdered;
+-- ighest Payment Amount for Each Check Numbe
+SELECT 
+    checkNumber,
+    MAX(amount) AS highest_amount
+FROM payments
+GROUP BY checkNumber;
